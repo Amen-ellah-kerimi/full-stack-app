@@ -13,7 +13,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <h1 className="text-4xl font-bold mb-4">Welcome, {session.user?.name}!</h1>
-            <p className="text-gray-600 mb-8">You're signed in and ready to create posts.</p>
+            <p className="text-gray-600 mb-8">You&apos;re signed in and ready to create posts.</p>
 
             <div className="flex justify-center gap-4 mb-6">
               <button
