@@ -2,6 +2,9 @@
 
 A modern full-stack web application built with Next.js 15, featuring user authentication, MongoDB database integration, and a responsive design.
 
+## 🌐 Live Demo
+**🔗 [Try it live on Vercel](https://full-stack-app-sooty.vercel.app/)**
+
 > 🇫🇷 **Version française disponible** : [README.fr.md](README.fr.md)
 
 ## ✨ Features
@@ -13,6 +16,47 @@ A modern full-stack web application built with Next.js 15, featuring user authen
 - **🛡️ Type Safety**: Full TypeScript support
 - **🔧 Production Ready**: Optimized for Vercel deployment
 - **📱 Mobile Friendly**: Responsive design that works on all devices
+
+## 💻 Tech Stack
+
+This full-stack application leverages modern technologies for scalability, security, and performance:
+
+### 🎯 Core Framework
+| Technology | Description |
+|---|---|
+| ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) | Full-stack React framework with App Router and server components |
+| ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black) | Modern React 19 with hooks and concurrent features |
+| ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) | Type-safe development with comprehensive type checking |
+
+### 🔐 Authentication & Security
+| Technology | Description |
+|---|---|
+| ![NextAuth.js](https://img.shields.io/badge/NextAuth.js-000000?style=for-the-badge&logo=next.js&logoColor=white) | Complete authentication solution with OAuth providers |
+| ![GitHub](https://img.shields.io/badge/GitHub_OAuth-181717?style=for-the-badge&logo=github&logoColor=white) | Secure GitHub OAuth integration for user authentication |
+
+### 🗄️ Database & ORM
+| Technology | Description |
+|---|---|
+| ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white) | NoSQL database for flexible data storage |
+| ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white) | Elegant MongoDB object modeling for Node.js |
+
+### 🎨 Styling & UI
+| Technology | Description |
+|---|---|
+| ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) | Utility-first CSS framework for rapid UI development |
+| ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | Modern CSS with custom properties and responsive design |
+
+### 🛠️ Development Tools
+| Technology | Description |
+|---|---|
+| ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) | Code linting for consistent code quality |
+| ![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white) | TypeScript-first schema validation |
+
+### 🚀 Deployment & Hosting
+| Technology | Description |
+|---|---|
+| ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) | Optimized deployment with serverless functions |
+| ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) | Runtime environment for server-side functionality |
 
 ## 🚀 Quick Start
 
@@ -27,7 +71,7 @@ A modern full-stack web application built with Next.js 15, featuring user authen
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Amen-ellah-kerimi/full-stack-app.git
    cd full-stack-app
    ```
 
@@ -98,6 +142,23 @@ A modern full-stack web application built with Next.js 15, featuring user authen
    - Use connection string: `mongodb://localhost:27017/full-stack-app`
 
 ## 🚀 Deployment
+
+### Production Validation
+
+Before deploying, run the production validation script to ensure everything is configured correctly:
+
+```bash
+npm run validate:prod
+```
+
+This script checks:
+- ✅ Required environment variables (MONGODB_URI, NEXTAUTH_SECRET, GitHub OAuth)
+- ✅ All required files exist
+- ✅ Dependencies are installed
+- ✅ Project builds successfully
+- ✅ Database connection works
+- ✅ API routes are properly configured
+- ✅ NextAuth configuration is complete
 
 ### Deploy to Vercel (Recommended)
 
@@ -170,6 +231,7 @@ npm run dev          # Start development server
 npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
+npm run validate:prod # Validate production readiness
 ```
 
 ## 🐛 Troubleshooting

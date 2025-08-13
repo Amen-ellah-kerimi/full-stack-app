@@ -46,9 +46,15 @@ export default function PostForm() {
 
   if (!session) {
     return (
-      <div className="text-center py-8">
-        <p>Please sign in to create posts.</p>
-        <a href="/login" className="text-blue-500 hover:underline">
+      <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg text-center py-12 px-8">
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Authentication Required</h2>
+          <p className="text-gray-600">Please sign in to create posts.</p>
+        </div>
+        <a
+          href="/login"
+          className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+        >
           Sign In
         </a>
       </div>
@@ -57,55 +63,73 @@ export default function PostForm() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white p-6 rounded-lg shadow-md">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
-          <input
-            {...register("title")}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter post title"
-          />
-          {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
+      <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Create New Post</h2>
+          <p className="text-gray-600">Share your thoughts with the community</p>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
-          <textarea
-            {...register("content")}
-            rows={6}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Write your post content here..."
-          />
-          {errors.content && <p className="text-red-500 text-sm mt-1">{errors.content.message}</p>}
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
+            <input
+              {...register("title")}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              placeholder="Enter an engaging title for your post"
+            />
+            {errors.title && <p className="text-red-600 text-sm mt-1">{errors.title.message}</p>}
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Author</label>
-          <input
-            {...register("author")}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Author name"
-          />
-          {errors.author && <p className="text-red-500 text-sm mt-1">{errors.author.message}</p>}
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
+            <textarea
+              {...register("content")}
+              rows={8}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
+              placeholder="Write your post content here. Share your ideas, experiences, or insights..."
+            />
+            {errors.content && <p className="text-red-600 text-sm mt-1">{errors.content.message}</p>}
+          </div>
 
-        <div className="flex gap-4">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
-          >
-            {isSubmitting ? "Creating..." : "Create Post"}
-          </button>
-          <button
-            type="button"
-            onClick={() => router.push("/posts")}
-            className="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600"
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Author</label>
+            <input
+              {...register("author")}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-gray-50"
+              placeholder="Author name"
+              readOnly={!!session?.user?.name}
+            />
+            {errors.author && <p className="text-red-600 text-sm mt-1">{errors.author.message}</p>}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex-1 sm:flex-none"
+            >
+              {isSubmitting ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Creating...
+                </span>
+              ) : (
+                "Create Post"
+              )}
+            </button>
+            <button
+              type="button"
+              onClick={() => router.push("/posts")}
+              className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium px-6 py-3 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 flex-1 sm:flex-none"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,9 @@
 
 Une application web full-stack moderne construite avec Next.js 15, incluant l'authentification utilisateur, l'intégration de base de données MongoDB, et un design responsive.
 
+## 🌐 Démo en Direct
+**🔗 [Essayez-le en direct sur Vercel](https://full-stack-app-sooty.vercel.app/)**
+
 > 🇬🇧 **English version available**: [README.md](README.md)
 
 ## ✨ Fonctionnalités
@@ -13,6 +16,47 @@ Une application web full-stack moderne construite avec Next.js 15, incluant l'au
 - **🛡️ Sécurité des types**: Support complet TypeScript
 - **🔧 Prêt pour la production**: Optimisé pour le déploiement Vercel
 - **📱 Compatible mobile**: Design responsive qui fonctionne sur tous les appareils
+
+## 💻 Stack Technologique
+
+Cette application full-stack exploite des technologies modernes pour la scalabilité, la sécurité et les performances :
+
+### 🎯 Framework Principal
+| Technologie | Description |
+|---|---|
+| ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) | Framework React full-stack avec App Router et composants serveur |
+| ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black) | React 19 moderne avec hooks et fonctionnalités concurrentes |
+| ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) | Développement type-safe avec vérification de types complète |
+
+### 🔐 Authentification & Sécurité
+| Technologie | Description |
+|---|---|
+| ![NextAuth.js](https://img.shields.io/badge/NextAuth.js-000000?style=for-the-badge&logo=next.js&logoColor=white) | Solution d'authentification complète avec fournisseurs OAuth |
+| ![GitHub](https://img.shields.io/badge/GitHub_OAuth-181717?style=for-the-badge&logo=github&logoColor=white) | Intégration OAuth GitHub sécurisée pour l'authentification utilisateur |
+
+### 🗄️ Base de Données & ORM
+| Technologie | Description |
+|---|---|
+| ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white) | Base de données NoSQL pour un stockage de données flexible |
+| ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white) | Modélisation d'objets MongoDB élégante pour Node.js |
+
+### 🎨 Styling & Interface
+| Technologie | Description |
+|---|---|
+| ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) | Framework CSS utility-first pour un développement UI rapide |
+| ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | CSS moderne avec propriétés personnalisées et design responsive |
+
+### 🛠️ Outils de Développement
+| Technologie | Description |
+|---|---|
+| ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) | Linting de code pour une qualité de code cohérente |
+| ![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white) | Validation de schéma TypeScript-first |
+
+### 🚀 Déploiement & Hébergement
+| Technologie | Description |
+|---|---|
+| ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) | Déploiement optimisé avec fonctions serverless |
+| ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) | Environnement d'exécution pour les fonctionnalités côté serveur |
 
 ## 🚀 Démarrage rapide
 
@@ -27,7 +71,7 @@ Une application web full-stack moderne construite avec Next.js 15, incluant l'au
 
 1. **Cloner le dépôt**
    ```bash
-   git clone <votre-url-repo>
+   git clone https://github.com/Amen-ellah-kerimi/full-stack-app.git
    cd full-stack-app
    ```
 
@@ -99,6 +143,23 @@ Une application web full-stack moderne construite avec Next.js 15, incluant l'au
 
 ## 🚀 Déploiement
 
+### Validation de Production
+
+Avant de déployer, exécutez le script de validation de production pour vous assurer que tout est configuré correctement :
+
+```bash
+npm run validate:prod
+```
+
+Ce script vérifie :
+- ✅ Variables d'environnement requises (MONGODB_URI, NEXTAUTH_SECRET, GitHub OAuth)
+- ✅ Tous les fichiers requis existent
+- ✅ Les dépendances sont installées
+- ✅ Le projet se construit avec succès
+- ✅ La connexion à la base de données fonctionne
+- ✅ Les routes API sont correctement configurées
+- ✅ La configuration NextAuth est complète
+
 ### Déployer sur Vercel (Recommandé)
 
 1. **Pousser vers GitHub**
@@ -162,6 +223,7 @@ npm run dev          # Démarrer le serveur de développement
 npm run build        # Construire pour la production
 npm run start        # Démarrer le serveur de production
 npm run lint         # Exécuter ESLint
+npm run validate:prod # Valider la préparation pour la production
 ```
 
 ## 🐛 Dépannage
