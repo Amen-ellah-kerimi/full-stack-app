@@ -1,36 +1,208 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Full Stack App
 
-## Getting Started
+A modern full-stack web application built with Next.js 15, featuring user authentication, MongoDB database integration, and a responsive design.
 
-First, run the development server:
+> 🇫🇷 **Version française disponible** : [README.fr.md](README.fr.md)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **🔐 Authentication**: Secure GitHub OAuth with NextAuth.js
+- **📊 Database**: MongoDB integration with Mongoose ODM
+- **🎨 Modern UI**: Responsive design with TailwindCSS 4
+- **⚡ Performance**: Built with Next.js 15 and React 19
+- **🛡️ Type Safety**: Full TypeScript support
+- **🔧 Production Ready**: Optimized for Vercel deployment
+- **📱 Mobile Friendly**: Responsive design that works on all devices
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- MongoDB database (Atlas or local)
+- GitHub OAuth App ([Create one here](https://github.com/settings/applications/new))
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd full-stack-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Edit `.env.local` and add your configuration:
+   ```env
+   # MongoDB Database
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/full-stack-app?retryWrites=true&w=majority
+
+   # NextAuth.js Configuration
+   NEXTAUTH_SECRET=your-nextauth-secret-here
+   NEXTAUTH_URL=http://localhost:3000
+
+   # GitHub OAuth Provider
+   GITHUB_CLIENT_ID=your-github-client-id
+   GITHUB_CLIENT_SECRET=your-github-client-secret
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `MONGODB_URI` | MongoDB connection string | ✅ Yes |
+| `NEXTAUTH_SECRET` | NextAuth.js secret key | ✅ Yes |
+| `NEXTAUTH_URL` | App URL for NextAuth.js | ✅ Yes |
+| `GITHUB_CLIENT_ID` | GitHub OAuth client ID | ✅ Yes |
+| `GITHUB_CLIENT_SECRET` | GitHub OAuth client secret | ✅ Yes |
+
+### GitHub OAuth Setup
+
+1. **Create GitHub OAuth App**:
+   - Go to [GitHub Developer Settings](https://github.com/settings/developers)
+   - Click "New OAuth App"
+   - Set Authorization callback URL to: `http://localhost:3000/api/auth/callback/github`
+
+2. **Get Credentials**:
+   - Copy Client ID and Client Secret
+   - Add them to your `.env.local` file
+
+### MongoDB Setup
+
+1. **MongoDB Atlas** (Recommended):
+   - Create account at [MongoDB Atlas](https://www.mongodb.com/atlas)
+   - Create a new cluster
+   - Get connection string and add to `MONGODB_URI`
+
+2. **Local MongoDB**:
+   - Install MongoDB locally
+   - Use connection string: `mongodb://localhost:27017/full-stack-app`
+
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+2. **Deploy on Vercel**
+   - Visit [Vercel](https://vercel.com)
+   - Import your GitHub repository
+   - Add environment variables:
+     - `MONGODB_URI`: Your MongoDB connection string
+     - `NEXTAUTH_SECRET`: Generate with `openssl rand -base64 32`
+     - `NEXTAUTH_URL`: Your production URL (e.g., `https://your-app.vercel.app`)
+     - `GITHUB_CLIENT_ID`: Your GitHub OAuth client ID
+     - `GITHUB_CLIENT_SECRET`: Your GitHub OAuth client secret
+   - Deploy!
+
+3. **Update GitHub OAuth**
+   - Update Authorization callback URL to: `https://your-app.vercel.app/api/auth/callback/github`
+
+### Deploy to Other Platforms
+
+The app can be deployed to any platform that supports Next.js:
+
+- **Netlify**: Use `npm run build` and deploy the `.next` folder
+- **Railway**: Connect your GitHub repo and add environment variables
+- **DigitalOcean**: Use App Platform with automatic GitHub integration
+
+## 🛠️ Development
+
+### Project Structure
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── auth/[...nextauth]/  # NextAuth.js API routes
+│   │   └── debug/               # Debug API route
+│   ├── globals.css              # Global styles
+│   ├── layout.tsx               # Root layout
+│   └── page.tsx                 # Home page
+├── lib/
+│   ├── authOptions.ts           # NextAuth.js configuration
+│   ├── auth.ts                  # Authentication utilities
+│   └── mongoose.ts              # MongoDB connection
+├── models/
+│   └── User.ts                  # User model
+├── schemas/                     # Zod validation schemas
+└── types/                       # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 with App Router
+- **Authentication**: NextAuth.js with GitHub OAuth
+- **Database**: MongoDB with Mongoose ODM
+- **Styling**: TailwindCSS 4
+- **Language**: TypeScript
+- **Validation**: Zod
+- **Deployment**: Vercel-ready
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Scripts
 
-## Learn More
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🐛 Troubleshooting
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Common Issues
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### "MongooseError: Operation buffering timed out"
+- **Solution**: Check your MongoDB connection string
+- **Check**: Ensure your IP is whitelisted in MongoDB Atlas
 
-## Deploy on Vercel
+#### "NextAuth.js: Missing secret"
+- **Solution**: Add `NEXTAUTH_SECRET` to your environment variables
+- **Generate**: Use `openssl rand -base64 32` to generate a secret
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### "GitHub OAuth Error"
+- **Solution**: Verify your GitHub OAuth app configuration
+- **Check**: Ensure callback URL matches your deployment URL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### "Cannot connect to MongoDB"
+- **Solution**: Verify your `MONGODB_URI` is correct
+- **Check**: Test connection with MongoDB Compass or similar tool
+
+## 🔒 Security & Performance
+
+- **Environment Variables**: Never commit secrets to version control
+- **MongoDB Connection**: Uses connection pooling for optimal performance
+- **Authentication**: Secure JWT-based sessions with NextAuth.js
+- **Type Safety**: Full TypeScript coverage for better code quality
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details
+
+---
+
+**Built with ❤️ using Next.js 15, React 19, MongoDB, and NextAuth.js**
